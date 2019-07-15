@@ -3,6 +3,9 @@ const bodyParser = require("body-parser");
 const app = express();
 const user = require("./routes/user");
 
+const admin = require("./routes/admin");
+
+app.use(admin);
 app.use(user);
 app.set("view engine", "ejs");
 app.use(bodyParser.json());
