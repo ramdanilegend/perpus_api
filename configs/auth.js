@@ -11,6 +11,3 @@ module.exports.verifyToken = (req, res, next)=>{
         res.sendStatus(403);
     }
 }
-=======
-const bearerHeader = req.headers['key']
->>>>>>> 54db6622fe747ab4335bedc3c2da4983fa337913
