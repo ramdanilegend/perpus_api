@@ -1,0 +1,1 @@
+const bearerHeader = req.headers['key']
