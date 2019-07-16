@@ -17,7 +17,9 @@ module.exports.postRegister = (req, res) => {
             defaults: {
                 username: req.body.username,
                 password: hash,
-                roles: req.body.roles
+                nama: req.body.nama,
+                alamat: req.body.alamat,
+                noHp: req.body.noHp
             }
         })
         .then((user) => {
