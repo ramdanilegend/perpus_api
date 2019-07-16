@@ -12,12 +12,13 @@ module.exports.postRegister = (req, res) => {
     User
         .findOrCreate({
             where: {
-                username: req.body.username
+                email: req.body.email
             },
             defaults: {
-                username: req.body.username,
+                email: req.body.email,
                 password: hash,
                 nama: req.body.nama,
+                jk: req.body.jk,
                 alamat: req.body.alamat,
                 noHp: req.body.noHp
             }
