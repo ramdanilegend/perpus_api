@@ -12,14 +12,15 @@ module.exports.postRegister = (req, res) => {
     User
         .findOrCreate({
             where: {
-                email: req.body.email
+                username: req.body.username
             },
             defaults: {
-                email: req.body.email,
+                username: req.body.username,
                 password: hash,
                 nama: req.body.nama,
                 jk: req.body.jk,
                 alamat: req.body.alamat,
+                jabatan: req.body.jabatan,
                 noHp: req.body.noHp
             }
         })
@@ -34,7 +35,7 @@ module.exports.postRegister = (req, res) => {
 module.exports.postLogin = (req, res) => {
     User.findOne({
         where: {
-            email: req.body.username
+            username: req.body.username
         }
     }).then(user => {
         if (!user) {
