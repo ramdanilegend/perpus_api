@@ -15,16 +15,24 @@ module.exports.postRegister = (req, res) => {
                 email: req.body.email
             },
             defaults: {
+                username: req.body.username,
                 email: req.body.email,
                 password: hash,
-                nama: req.body.nama,
-                jk: req.body.jk,
-                alamat: req.body.alamat,
-                noHp: req.body.noHp
+                roles: req.body.roles
             }
         })
         .then((user) => {
-            res.json(user);
+            if (user[1] !== false) {
+                res.json({
+                    message: "Register berhasil",
+                    data: user[1]
+                });
+            } else {
+                res.json({
+                    message: "Email sudah terdaftar",
+                    data: user[1]
+                });
+            }
         })
         .catch((error) => {
             console.log(error);
@@ -34,11 +42,11 @@ module.exports.postRegister = (req, res) => {
 module.exports.postLogin = (req, res) => {
     User.findOne({
         where: {
-            email: req.body.username
+            email: req.body.email
         }
     }).then(user => {
         if (!user) {
-            res.status(400).send('Username tidak ada');
+            res.status(400).send('Email tidak ada');
         }
 
         bcrypt.compare(req.body.password, user.get('password'), function (err, isMatch) {
@@ -48,7 +56,8 @@ module.exports.postLogin = (req, res) => {
 
             if (isMatch) {
                 jwt.sign({
-                    id: user.get('id')
+                    id: user.get('id'),
+                    hakakses: user.get('roles')
                 }, process.env.SECRETKEY, (error, token) => {
                     res.json({
                         token: token

@@ -1,13 +1,14 @@
+module.exports.verifyToken = (req, res, next) => {
+    const bearerHeader = req.headers['key']
 
-module.exports.verifyToken = (req, res, next)=>{
-    const bearerHeader = req.headers['authorization'];
-
-    if (typeof bearerHeader !== 'undefined'){
+    if (typeof bearerHeader !== 'undefined') {
         const bearer = bearerHeader.split(' ');
         const bearerToken = bearer[1];
         req.token = bearerToken;
         next();
-    } else{
-        res.sendStatus(403);
+    } else {
+        res.status(403).send(
+            "Anda Harus Login Terlebih Dahulu"
+        );
     }
 }
