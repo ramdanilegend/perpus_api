@@ -7,8 +7,64 @@
   <div class="alert alert-success" role="alert">
       <h4>Index Page</h4>
       <h5>Register</h5>
+      <p>cara test di postman register memasukan value json berikut :<hr /><br />
+        post mengunakan postman : localhost:3000/user/register<br />
+        "email": "dadam@gmail.com",<br />
+    "password": "1234",<br />
+    "nama": "dadam",<br />
+    "alamat": "bandung",<br />
+    "tlp": "098989899",<br />
+    "roles":"user"<br /><hr />
+    <br />
+    <div class="alert alert-danger" role="alert">
+      Roles harus di isi admin atau user <br />
+      Admin bisa post put dan delete <br />
+      user bisa getonebook getallbook dan order
+    </div>
+    
+    </p>
+    <h5>Login</h5>
+    <p>cara test di postman login memasukan value json berikut :<hr /><br />
+        post mengunakan postman : localhost:3000/user/login<br />
+        "email": "dadam@gmail.com",<br />
+    "password": "1234",<br />
+    <br />
+    </p>
       <h5>Admin</h5>
+      <h6>create book</h6>
+      <p>cara test di postman create book memasukan value json berikut :<hr /><br />
+        post mengunakan postman : localhost:3000/books/create<br />
+        "judul": "Tanganku",<br />
+    "pengarang": "dadam",<br />
+    "penerbit": "Erlangga",<br />
+    "tahun": "2019-11-11",<br />
+    "harga": 1000000
+    <br />
+    <h6>update book</h6>
+      <p>cara test di postman update book memasukan value json berikut :<hr /><br />
+        put mengunakan postman : localhost:3000/books/:id<br />
+        "judul": "Tanganku",<br />
+    "pengarang": "dadam",<br />
+    "penerbit": "Erlangga",<br />
+    "tahun": "2019-11-11",<br />
+    "harga": 1000000
+    <br />
+    <h6>delete book</h6>
+      <p>cara test di postman delete book memasukan value json berikut :<hr /><br />
+        delete mengunakan postman : localhost:3000/books/:id<br />
+        <br />
       <h5>User</h5>
+      <h6>get one book</h6>
+      <p>cara test di postman get one book memasukan value json berikut :<hr /><br />
+        get mengunakan postman : localhost:3000/books/:id<br />
+        <h6>get all book</h6>
+      <p>cara test di postman get all book memasukan value json berikut :<hr /><br />
+        get mengunakan postman : localhost:3000/books/<br />
+        <h6>post order</h6>
+      <p>cara test di postman post order dengan memasukan value json berikut :<hr /><br />
+        post mengunakan postman : localhost:3000/order/<br />
+        "tanggal_order": "2019/11/12",<br />
+        "bookid": 1
   </div>
 
 <% include ./template/footer %>

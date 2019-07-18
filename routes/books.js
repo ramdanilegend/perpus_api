@@ -9,7 +9,7 @@ router.get('/:id', auth.verifyToken, booksController.getOneBook);
 
 router.get('/', auth.verifyToken, booksController.getIndexBooks);
 
-router.post('/', auth.verifyToken, booksController.postBooks);
+router.post('/create', auth.verifyToken, booksController.postBooks);
 
 router.put('/:id', auth.verifyToken, booksController.putBooks);
 
