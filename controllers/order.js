@@ -13,7 +13,7 @@ module.exports.postOrder = (req, res) => {
             let values = {
                 tanggal_order: req.body.tanggal_order,
                 userId: authData.id,
-                bookId: req.body.bookid
+                bookid: req.body.bookid
             }
             if (authData.hakakses == 'user') {
                 Books.findOne({

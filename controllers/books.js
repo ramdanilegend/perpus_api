@@ -1,7 +1,6 @@
+const Books = require('../models/books');
+const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
-dotenv.config();
-
-const Book = require('../models/Books');
 
 module.exports.getIndexBooks = (req, res) => {
     jwt.verify(req.token, process.env.SECRETKEY, (error, authData) => {
@@ -14,11 +13,11 @@ module.exports.getIndexBooks = (req, res) => {
                 .then((books) => {
                     if (!books) {
                         res.json({
-                            message: "Data Buku Yang Anda Cari Tidak Ada"
+                            message: "Data buku tidak ada"
                         });
                     } else {
                         res.json({
-                            message: "Buku Tersedia",
+                            message: "Data buku ada",
                             data: books
                         });
                     }

@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+const bctypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -6,8 +6,8 @@ dotenv.config();
 const User = require('../models/User');
 
 module.exports.postRegister = (req, res) => {
-    var salt = bcrypt.genSaltSync(10);
-    var hash = bcrypt.hashSync(req.body.password, salt);
+    var salt = bctypt.genSaltSync(10);
+    var hash = bctypt.hashSync(req.body.password, salt);
 
     User
         .findOrCreate({
@@ -46,10 +46,10 @@ module.exports.postLogin = (req, res) => {
         }
     }).then(user => {
         if (!user) {
-            res.status(400).send('Email tidak ada');
+            res.status(400).send('Username tidak ada');
         }
 
-        bcrypt.compare(req.body.password, user.get('password'), function (err, isMatch) {
+        bctypt.compare(req.body.password, user.get('password'), function (err, isMatch) {
             if (err) {
                 res.status(400).send('Password Error');
             };

@@ -19,6 +19,6 @@ app.use('/books', booksRouter);
 app.use('/order', orderRouter);
 
 app.listen(3000, () => {
-    console.log('Server nyala bro');
+    console.log('Started at port 3000');
     sequelize.sync();
 });
