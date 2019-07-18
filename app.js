@@ -19,6 +19,9 @@ app.use(express.json());
 app.use(express.urlencoded({
   extended: false
 }));
+
+var Books = require("./models/books");
+var User = require("./models/user");
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
