@@ -4,10 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var authRouter = require('./routes/auth');
-var usersRouter = require('./routes/users');
-var booksRouter = require('./routes/books');
+
+const homeRouter = require('./routes/home');
+const userRouter = require('./routes/user');
+const booksRouter = require('./routes/books');
+const orderRouter = require('./routes/order');
 
 var app = express();
 
@@ -25,10 +26,10 @@ var User = require("./models/user");
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/auth', authRouter);
+app.use("/", homeRouter);
+app.use('/user', userRouter);
 app.use('/books', booksRouter);
+app.use('/order', orderRouter);
 
 app.use(function (req, res, next) {
   next(createError(404));
