@@ -8,7 +8,7 @@ Books.init({
     judul: Sequelize.STRING,
     pengarang: Sequelize.STRING,
     penerbit: Sequelize.STRING,
-    tahun_terbit: Sequelize.STRING,
+    tahun: Sequelize.STRING,
     harga: Sequelize.INTEGER
 }, {
     sequelize,

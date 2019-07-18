@@ -13,11 +13,11 @@ module.exports.getIndexBooks = (req, res) => {
                 .then((books) => {
                     if (!books) {
                         res.json({
-                            message: "Data buku tidak ada"
+                            message: "Data buku ada"
                         });
                     } else {
                         res.json({
-                            message: "Data buku ada",
+                            message: "Data buku belum ada",
                             data: books
                         });
                     }
@@ -57,7 +57,7 @@ module.exports.postBooks = (req, res) => {
         judul: req.body.judul,
         pengarang: req.body.pengarang,
         penerbit: req.body.penerbit,
-        tahun_terbit: req.body.tahun_terbit,
+        tahun: req.body.tahun,
         harga: req.body.harga
     }
     jwt.verify(req.token, process.env.SECRETKEY, (error, authData) => {
@@ -71,7 +71,7 @@ module.exports.postBooks = (req, res) => {
                 create(values)
                     .then(books => {
                         res.json({
-                            message: "Data Berhasil di simpan",
+                            message: "Data Buku Berhasil di Simpan",
                             data: books
                         });
                     }).catch((error) => {
@@ -79,7 +79,7 @@ module.exports.postBooks = (req, res) => {
                     })
 
             } else {
-                res.status(403).send("Anda tidak bisa input data")
+                res.status(403).send("Input tidak valid")
             }
         }
     })
@@ -91,7 +91,7 @@ module.exports.putBooks = (req, res) => {
         judul: req.body.judul,
         pengarang: req.body.pengarang,
         penerbit: req.body.penerbit,
-        tahun_terbit: req.body.tahun_terbit,
+        tahun: req.body.tahun,
         harga: req.body.harga
     }
 

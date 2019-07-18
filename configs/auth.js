@@ -1,5 +1,5 @@
 module.exports.verifyToken = (req, res, next) => {
-    const bearerHeader = req.headers['key']
+    const bearerHeader = req.headers['verifikasi']
 
     if (typeof bearerHeader !== 'undefined') {
         const bearer = bearerHeader.split(' ');
@@ -8,7 +8,7 @@ module.exports.verifyToken = (req, res, next) => {
         next();
     } else {
         res.status(403).send(
-            "Anda Harus Login Terlebih Dahulu"
+            "Must Login"
         );
     }
 }

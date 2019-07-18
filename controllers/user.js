@@ -15,9 +15,11 @@ module.exports.postRegister = (req, res) => {
                 email: req.body.email
             },
             defaults: {
-                username: req.body.username,
                 email: req.body.email,
                 password: hash,
+                nama: req.body.nama,
+                alamat: req.body.alamat,
+                tlp: req.body.tlp,
                 roles: req.body.roles
             }
         })
